@@ -12,4 +12,13 @@ module.exports = (app) => {
   //STEP 2 - GOOGLE GRANTS PERMISSION, THEN USER REDIRECTED BACK TO /auth/google/callback url with "code" in message.
   //STEP 3 - PASSPORT STRATEGY SAW CODE IN URL, returns in-exchange user profile/email/accesstoken...
   app.get('/auth/google/callback', passport.authenticate('google'));
+
+  app.get('/api/logout', (req, res) => {
+    req.logout(); //kills cookie
+    res.send(req.user); //confirmation logged out
+  });
+
+  app.get('/api/current_user', (req, res) => {
+    res.send(req.user);
+  });
 };
