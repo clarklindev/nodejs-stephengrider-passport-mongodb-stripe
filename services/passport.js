@@ -12,11 +12,10 @@ passport.serializeUser((user, done) => {
 });
 
 //deserialize cookie - takes what we passed into serializeUser() and does the opposite (ie returns user)
-passport.deserializeUser((id, done) => {
+passport.deserializeUser(async (id, done) => {
   //search for user
-  User.findById(id).then((user) => {
-    done(null, user);
-  });
+  const user = await User.findById(id);
+  done(null, user);
 });
 
 passport.use(
@@ -29,23 +28,20 @@ passport.use(
     },
 
     //STEP4 - this callback function is called AFTER call to passport.authenticate('google')
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       console.log('accessToken: ', accessToken);
       console.log('refreshToken: ', refreshToken);
       console.log('profile: ', profile);
 
-      User.findOne({ googleId: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          //if exisiting user
-          done(null, existingUser); //first param is error object, second param is userRecord
-        } else {
-          //no user in db
-          //async call
-          new User({ googleId: profile.id })
-            .save()
-            .then((user) => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        return done(null, existingUser); //first param is error object, second param is userRecord
+      }
+      //no user in db
+      //async call
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
