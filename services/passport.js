@@ -12,10 +12,11 @@ passport.serializeUser((user, done) => {
 });
 
 //deserialize cookie - takes what we passed into serializeUser() and does the opposite (ie returns user)
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser((id, done) => {
   //search for user
-  const user = await User.findById(id);
-  done(null, user);
+  User.findById(id).then((user) => {
+    done(null, user);
+  });
 });
 
 passport.use(
