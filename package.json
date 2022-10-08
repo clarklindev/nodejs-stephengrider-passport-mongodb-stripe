@@ -12,7 +12,7 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -29,3 +29,6 @@
     "stripe": "^10.13.0"
   }
 }
+
+
+//git push heroku using-react-stripe-checkout:master
