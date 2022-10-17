@@ -10,6 +10,17 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = (app) => {
+  //get all surveys by user
+  app.get('/api/surveys', async (req, res) => {
+    //ask mongoose for all surveys that are in db (survey._user) created by current user (req.user)
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+    //but we dont want all recipients of the email...mongoose use query (projection)
+
+    res.send(surveys);
+  });
+
   //thanks for voting
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('thanks for voting');
