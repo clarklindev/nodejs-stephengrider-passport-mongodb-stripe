@@ -21,8 +21,8 @@
   ```
 
   ```cmd
-  //start on port 80
-  ngrok http 80
+  //start on port 5000 (same port as localhost server), paste url for tunnel in sendgrid
+  ngrok http 5000
   ```
 
   ```cmd
