@@ -1,5 +1,14 @@
 #running the app
 
+```console
+npm run dev
+```
+
+## heroku
+
+- to deploy the server side code: login to heroku (use heroku to deploy "client" folder)
+- a project already exists
+
 ## MongoDB
 
 - db
@@ -9,7 +18,7 @@
 - when running in dev, need to use tunneling for localhost, login to Ngrok, it has the details to start a tunnel to allow communication between outside and your localhost (specific port).
 -
 
-- sendgrid - tracking email receiver interactions
+- twillio/sendgrid - tracking email receiver interactions
 
   - remember to use well-formed local urls for dev (include http://)
   - [click tracking](https://docs.sendgrid.com/ui/analytics-and-reporting/click-tracking-html-best-practices)
