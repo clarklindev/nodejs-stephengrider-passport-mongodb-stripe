@@ -31,3 +31,15 @@
   ```
 
   [url](https://www.udemy.com/course/node-with-react-fullstack-web-development/learn/lecture/17196996#overview)
+
+## Passport strategy
+
+- facebook - developers https://developers.facebook.com/
+- google - developers https://developers.google.com/
+
+### ununsed strategies
+
+- apple - developers https://developer.apple.com/ (needs paying developer acc $$$)
+- twitter - developers https://developer.twitter.com/en/apps ]
+  - passport-twitter uses OAuth 1.0a API.
+  - NEW: npm install @superfaceai/passport-twitter-oauth2 (redirect error)
